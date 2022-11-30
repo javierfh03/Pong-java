@@ -1,2 +1,2 @@
-# Pong-Java
-El juego de pong en java
+# Pong-java
+El juego de pong en java para dos jugadores.
