@@ -15,7 +15,6 @@ public class Ventana extends JFrame implements KeyListener{
     public Ventana() throws HeadlessException {
         setSize(600, 400);
         setResizable(false);
-        //setBackground(Color.BLACK);
         setLocationRelativeTo(null);
         setTitle("Pong");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -24,18 +23,16 @@ public class Ventana extends JFrame implements KeyListener{
         jugador2 = new Raqueta(this, Raqueta.DERECHA);
         repintar = false;
                 
-        this.addKeyListener(this);
+        addKeyListener(this);
     }
     
     @Override
     public void paint(Graphics g) { 
-        if (repintar){
-            super.paintComponents(g);
-        } else{
-            repintar = true;
-        }
+        g.setColor(Color.BLACK);
+        g.fillRect(0, 0, getWidth(), getHeight());
         
-        g.setColor(Color.RED);
+        
+        g.setColor(Color.WHITE);
         jugador1.dibujar(g);
         jugador2.dibujar(g);
     }
