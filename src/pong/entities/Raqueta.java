@@ -5,14 +5,16 @@ import pong.ui.EventoTeclado;
 import pong.ui.Ventana;
 
 public class Raqueta{
-    private int x, y, anchura, altura, jugador;
+    private int x, y, jugador, anchura, altura;
+    private Ventana ventana;
     public final static byte JUGADOR1 = 1;
     public final static byte JUGADOR2 = 2;
 
     public Raqueta(Ventana ventana, int jugador) {
+        this.jugador = jugador;      
+        this.ventana = ventana;
         this.anchura = 10;
-        this.altura = 50;
-        this.jugador = jugador;
+        this.altura = 60;
         
         if (jugador == JUGADOR1){
             x = 1;
@@ -23,6 +25,14 @@ public class Raqueta{
         y = (ventana.getHeight() / 2) - 10;
     }
 
+    public void setAltura(int altura) {
+        this.altura = altura;
+    }
+
+    public void setAnchura(int anchura) {
+        this.anchura = anchura;
+    }
+
     public int getX() {
         return x;
     }
@@ -30,34 +40,38 @@ public class Raqueta{
     public int getY() {
         return y;
     }
-
-    public int getAltura() {
-        return altura;
-    }
-
-    public int getAnchura() {
-        return anchura;
-    }
     
     public void moverY() {
         if (jugador == JUGADOR1){
             if (EventoTeclado.w) {
-                this.y = y - 10;
+                moverArriba();
             }
             if (EventoTeclado.s) {
-                this.y = y + 10;
+                moverAbajo();
             }
         } else {
             if (EventoTeclado.up) {
-                this.y = y - 10;
+                moverArriba();
             }
             if (EventoTeclado.down) {
-                this.y = y + 10;
+                moverAbajo();
             }
         }
     }
     
+    private void moverArriba(){
+        if (y > altura - (altura - 30)){
+            this.y = y - 10;
+        }
+    }
+    
+    private void moverAbajo(){
+        if (y < (ventana.getHeight() - altura)){
+            this.y = y + 10;
+        }
+    }
+    
     public void dibujar(Graphics g){
-        g.fillRect(getX(), getY(), getAnchura(), getAltura());
+        g.fillRect(getX(), getY(), anchura, altura);
     }
 }
