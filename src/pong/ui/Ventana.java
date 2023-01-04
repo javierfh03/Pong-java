@@ -3,14 +3,14 @@ package pong.ui;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.HeadlessException;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import pong.entities.Raqueta;
 
-public class Ventana extends JFrame implements KeyListener{
+public class Ventana extends JFrame {
+    
     private Raqueta jugador1, jugador2;
-    private boolean repintar;
+    private JPanel panel;
 
     public Ventana() throws HeadlessException {
         setSize(600, 400);
@@ -19,11 +19,16 @@ public class Ventana extends JFrame implements KeyListener{
         setTitle("Pong");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         
-        jugador1 = new Raqueta(this, Raqueta.IZQUIERDA);
-        jugador2 = new Raqueta(this, Raqueta.DERECHA);
-        repintar = false;
-                
-        addKeyListener(this);
+        panel = new JPanel();
+        add(panel);
+        
+        jugador1 = new Raqueta(this, Raqueta.JUGADOR1);
+        jugador2 = new Raqueta(this, Raqueta.JUGADOR2);
+        
+        EventoTeclado e = new EventoTeclado();
+        e.setVentana(this);
+        addKeyListener(e);
+        
     }
     
     @Override
@@ -34,32 +39,13 @@ public class Ventana extends JFrame implements KeyListener{
         
         g.setColor(Color.WHITE);
         jugador1.dibujar(g);
+        actualizar();
         jugador2.dibujar(g);
+        actualizar();
     }
-
-    @Override
-    public void keyTyped(KeyEvent e) {}
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-        switch (e.getKeyCode()) {
-            case KeyEvent.VK_W:
-                jugador1.moverY(Raqueta.SUBIR);
-                break;
-            case KeyEvent.VK_S:
-                jugador1.moverY(Raqueta.BAJAR);
-                break;
-            case KeyEvent.VK_UP:
-                jugador2.moverY(Raqueta.SUBIR);
-                break;
-            case KeyEvent.VK_DOWN:
-                jugador2.moverY(Raqueta.BAJAR);
-                break;
-        }
-        
-        repaint();
+    
+    public void actualizar(){
+        jugador1.moverY();
+        jugador2.moverY();
     }
-
-    @Override
-    public void keyReleased(KeyEvent e) {}
 }
