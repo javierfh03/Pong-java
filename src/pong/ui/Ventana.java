@@ -5,14 +5,21 @@ import java.awt.Graphics;
 import java.awt.HeadlessException;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import pong.entities.Pelota;
 import pong.entities.Raqueta;
 
 public class Ventana extends JFrame {
     
     private Raqueta jugador1, jugador2;
+    private Pelota pelota;
     private JPanel panel;
 
     public Ventana() throws HeadlessException {
+        EventoTeclado e = new EventoTeclado();
+        
+        e.setVentana(this);
+        addKeyListener(e);
+        
         setSize(600, 400);
         setResizable(false);
         setLocationRelativeTo(null);
@@ -24,11 +31,8 @@ public class Ventana extends JFrame {
         
         jugador1 = new Raqueta(this, Raqueta.JUGADOR1);
         jugador2 = new Raqueta(this, Raqueta.JUGADOR2);
-        
-        EventoTeclado e = new EventoTeclado();
-        e.setVentana(this);
-        addKeyListener(e);
-        
+        pelota = new Pelota(this);
+        pelota.start();
     }
     
     @Override
@@ -42,6 +46,8 @@ public class Ventana extends JFrame {
         actualizar();
         jugador2.dibujar(g);
         actualizar();
+        
+        pelota.dibujar(g);
     }
     
     public void actualizar(){

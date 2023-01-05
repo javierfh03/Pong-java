@@ -32,14 +32,6 @@ public class Raqueta{
     public void setAnchura(int anchura) {
         this.anchura = anchura;
     }
-
-    public int getX() {
-        return x;
-    }
-    
-    public int getY() {
-        return y;
-    }
     
     public void moverY() {
         if (jugador == JUGADOR1){
@@ -72,6 +64,6 @@ public class Raqueta{
     }
     
     public void dibujar(Graphics g){
-        g.fillRect(getX(), getY(), anchura, altura);
+        g.fillRect(x, y, anchura, altura);
     }
 }
