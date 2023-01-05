@@ -2,27 +2,27 @@ package pong.entities;
 
 import java.awt.Graphics;
 import pong.ui.EventoTeclado;
-import pong.ui.Ventana;
+import pong.ui.Pista;
 
 public class Raqueta{
     private int x, y, jugador, anchura, altura;
-    private Ventana ventana;
+    private Pista panel;
     public final static byte JUGADOR1 = 1;
     public final static byte JUGADOR2 = 2;
 
-    public Raqueta(Ventana ventana, int jugador) {
+    public Raqueta(Pista panel, byte jugador) {
         this.jugador = jugador;      
-        this.ventana = ventana;
+        this.panel = panel;
         this.anchura = 10;
         this.altura = 60;
         
         if (jugador == JUGADOR1){
             x = 1;
         } else {
-            x = ventana.getWidth() - 11;
+            x = panel.getWidth() - 11;
         }
         
-        y = (ventana.getHeight() / 2) - 10;
+        y = (panel.getHeight() / 2) - 30;
     }
 
     public void setAltura(int altura) {
@@ -52,13 +52,13 @@ public class Raqueta{
     }
     
     private void moverArriba(){
-        if (y > altura - (altura - 30)){
+        if (y > 0){
             this.y = y - 10;
         }
     }
     
     private void moverAbajo(){
-        if (y < (ventana.getHeight() - altura)){
+        if (y < (panel.getHeight() - altura)){
             this.y = y + 10;
         }
     }

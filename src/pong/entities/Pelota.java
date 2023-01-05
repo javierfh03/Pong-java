@@ -1,21 +1,19 @@
 package pong.entities;
 
 import java.awt.Graphics;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import pong.ui.Ventana;
+import pong.ui.Pista;
 
 public class Pelota extends Thread {
 
-    private Ventana ventana;
+    private Pista panel;
     private int x, y;
     private boolean direccionIzquierda, direccionAbajo;
 
-    public Pelota(Ventana ventana) {
+    public Pelota(Pista ventana) {
         direccionIzquierda = true;
         direccionAbajo = true;
 
-        this.ventana = ventana;
+        this.panel = ventana;
         this.x = ventana.getWidth() / 2;
         this.y = ventana.getHeight() / 2;
     }
@@ -32,7 +30,7 @@ public class Pelota extends Thread {
             mover();
             cambiarSentido();
 
-            ventana.repaint();
+            panel.repaint();
         }
     }
 
@@ -41,7 +39,7 @@ public class Pelota extends Thread {
             direccionIzquierda = false;
         }
         
-        if (x == ventana.getWidth()) {
+        if (!(x < panel.getWidth())) {
             direccionIzquierda = true;
         }
         
@@ -49,8 +47,9 @@ public class Pelota extends Thread {
             direccionAbajo = true;
         }
         
-        if (y == ventana.getHeight()) {
+        if (!(y < panel.getHeight())) {
             direccionAbajo = false;
+            
         }
     }
 

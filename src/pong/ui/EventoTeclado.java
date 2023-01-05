@@ -12,10 +12,10 @@ import java.awt.event.KeyEvent;
 public class EventoTeclado extends KeyAdapter {
 
     public static boolean w, s, up, down;
-    private Ventana ventana;
-
-    public void setVentana(Ventana ventana) {
-        this.ventana = ventana;
+    private Pista panel;
+    
+    public EventoTeclado(Pista panel) {
+        this.panel = panel;
     }
     
     @Override
@@ -34,7 +34,7 @@ public class EventoTeclado extends KeyAdapter {
         if (id == KeyEvent.VK_DOWN) {
             down = true;
         }
-        ventana.repaint();
+        panel.repaint();
     }
 
     @Override
@@ -53,6 +53,6 @@ public class EventoTeclado extends KeyAdapter {
         if (id == KeyEvent.VK_DOWN) {
             down = false;
         }
-        ventana.repaint();
+        panel.repaint();
     }
 }
