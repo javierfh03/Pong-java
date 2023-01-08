@@ -1,23 +1,26 @@
 package pong.ui;
 
 import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.HeadlessException;
 import javax.swing.JFrame;
 
 public class Ventana extends JFrame {
 
+    private Pista panel;
+    
     public Ventana() throws HeadlessException {
-        Pista p = new Pista();
-        EventoTeclado e = new EventoTeclado(p);
+        this.panel = new Pista();
+        EventoTeclado e = new EventoTeclado(panel);
         
-        add(p);
+        add(panel);
         addKeyListener(e);
         
-        setSize(600, 400);
+        setLayout(null);
+        setSize(panel.getWidth(), panel.getHeight());
         setResizable(false);
         setLocationRelativeTo(null);
         setTitle("Pong");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setBackground(Color.yellow);
     }
 }

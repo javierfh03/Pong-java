@@ -18,9 +18,7 @@ public class Pista extends JPanel{
     
     public Pista() throws HeadlessException {
         setBackground(Color.BLACK);
-        setSize(600, 400);
-        
-        System.out.println(getHeight());
+        setSize(700, 500);
         
         jugador1 = new Raqueta(this, Raqueta.JUGADOR1);
         jugador2 = new Raqueta(this, Raqueta.JUGADOR2);

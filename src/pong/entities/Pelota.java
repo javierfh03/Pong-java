@@ -6,16 +6,23 @@ import pong.ui.Pista;
 public class Pelota extends Thread {
 
     private Pista panel;
-    private int x, y;
+    private int x, y, tamanio, limiteX, limiteY;
     private boolean direccionIzquierda, direccionAbajo;
 
-    public Pelota(Pista ventana) {
-        direccionIzquierda = true;
-        direccionAbajo = true;
+    public Pelota(Pista panel) {
+        this.panel = panel;
+        
+        this.direccionIzquierda = true;
+        this.direccionAbajo = true;
+        this.x = panel.getWidth() / 2;
+        this.y = panel.getHeight() / 2;
+        setTamanio(15);
+    }
 
-        this.panel = ventana;
-        this.x = ventana.getWidth() / 2;
-        this.y = ventana.getHeight() / 2;
+    public void setTamanio(int tamanio) {
+        this.tamanio = tamanio;
+        this.limiteY = panel.getHeight() - tamanio;
+        this.limiteX = panel.getWidth() - tamanio;
     }
 
     @Override
@@ -39,7 +46,7 @@ public class Pelota extends Thread {
             direccionIzquierda = false;
         }
         
-        if (!(x < panel.getWidth())) {
+        if (!(x < limiteX)) {
             direccionIzquierda = true;
         }
         
@@ -47,27 +54,27 @@ public class Pelota extends Thread {
             direccionAbajo = true;
         }
         
-        if (!(y < panel.getHeight())) {
+        if (!(y < limiteY)) {
             direccionAbajo = false;
-            
+            System.out.println(limiteY);
         }
     }
 
     private void mover() {
         if (direccionIzquierda) {
-            x = x - 10;
+            x = x - 5;
         } else {
-            x = x + 10;
+            x = x + 5;
         }
         
         if (direccionAbajo) {
-            y = y + 10;
+            y = y + 5;
         } else {
-            y = y - 10;
+            y = y - 5;
         }
     }
 
     public void dibujar(Graphics g) {
-        g.fillRect(x, y, 10, 10);
+        g.fillRect(x, y, tamanio, tamanio);
     }
 }
