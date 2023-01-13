@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 
 public class Ventana extends JFrame {
     
-    private final static int ALTURA = 100;
+    private final static int ALTURA = 600;
     private final static int ANCHURA = 400;
     
     public Ventana() throws HeadlessException {
@@ -24,6 +24,6 @@ public class Ventana extends JFrame {
         setLocationRelativeTo(null);
         setTitle("Pong");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setBackground(Color.yellow);
+        setBackground(Color.BLACK);
     }
 }

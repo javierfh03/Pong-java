@@ -7,6 +7,7 @@ import pong.ui.Pista;
 public class Raqueta{
     private int x, y, jugador, anchura, altura;
     private Pista panel;
+    private Contador contador;
     public final static byte JUGADOR1 = 1;
     public final static byte JUGADOR2 = 2;
 
@@ -15,11 +16,12 @@ public class Raqueta{
         this.panel = panel;
         this.anchura = 10;
         this.altura = 60;
+        this.contador = new Contador(panel.getSize(), jugador);
         
         if (jugador == JUGADOR1){
             x = 1;
-        } else {
-            x = panel.getWidth() - 11;
+        } else if (jugador == Raqueta.JUGADOR2) {
+            x = panel.getWidth() - anchura - 1;
         }
         
         y = (panel.getHeight() / 2) - 30;
@@ -31,6 +33,10 @@ public class Raqueta{
 
     public void setAnchura(int anchura) {
         this.anchura = anchura;
+    }
+
+    public Contador getContador() {
+        return contador;
     }
     
     public void moverY() {
