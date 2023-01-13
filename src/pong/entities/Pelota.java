@@ -56,7 +56,6 @@ public class Pelota extends Thread {
         
         if (!(y < limiteY)) {
             direccionAbajo = false;
-            System.out.println(limiteY);
         }
     }
 
