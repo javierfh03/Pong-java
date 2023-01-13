@@ -1,8 +1,12 @@
 package pong.ui;
 
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.HeadlessException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPanel;
 import pong.entities.Pelota;
 import pong.entities.Raqueta;
@@ -11,13 +15,12 @@ public class Pista extends JPanel{
     
     private Raqueta jugador1, jugador2;
     private Pelota pelota;
-    private boolean sigueJuego;
+    private String ganador = "Ganó el jugador 1";
     
     public Pista(int Altura, int Anchura) throws HeadlessException {
         setBackground(Color.BLACK);
         setSize(Altura, Anchura);
         
-        this.sigueJuego = true;
         this.jugador1 = new Raqueta(this, Raqueta.JUGADOR1);
         this.jugador2 = new Raqueta(this, Raqueta.JUGADOR2);
         this.pelota = new Pelota(this);
@@ -37,7 +40,7 @@ public class Pista extends JPanel{
         super.paint(g);
         g.setColor(Color.WHITE);
         
-        if (sigueJuego) {
+        if (seguirJuego()) {
             // Dibujamos el poste en medio de la ventana.
             g.setColor(Color.WHITE);
             g.fillRect(getWidth() / 2, 0, 5, getHeight());
@@ -55,12 +58,34 @@ public class Pista extends JPanel{
             // Dibujamos la pelota.
             pelota.dibujar(g);
         } else {
-            g.drawString("Ganó pepe", getWidth() / 2, getHeight() / 2);
+            pelota.parar();
+            
+            // Dibujamos al ganador
+            g.setFont(new Font("Arial", Font.PLAIN, 40));
+            finalizarJuego(g);
         }
     }
     
     public void actualizar(){
         jugador1.moverY();
         jugador2.moverY();
+    }
+    
+    private void finalizarJuego(Graphics g){
+        FontMetrics f = g.getFontMetrics();
+        
+        g.drawString(ganador, (getWidth() - f.stringWidth(ganador)) / 2 , getHeight() / 2);
+    }
+    
+    private boolean seguirJuego() {
+        if (jugador1.getContador().getNumero() > 1) {
+            ganador = "Ganó el jugador 1";
+            return false;
+        } else if (jugador2.getContador().getNumero() > 1) {
+            ganador = "Ganó el jugador 2";
+            return false;
+        }
+        
+        return true;
     }
 }

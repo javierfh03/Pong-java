@@ -22,6 +22,10 @@ public class Contador {
         y = 50;
         numero = 0 + "";
     }
+
+    public int getNumero() {
+        return Integer.parseInt(numero);
+    }
     
     public void subirNumero(){
         int num = Integer.parseInt(numero);
@@ -32,7 +36,6 @@ public class Contador {
     
     public void dibujar(Graphics g){
         g.setFont(new Font("Arial", Font.PLAIN, TAMANIO_LETRA));
-        
         
         if (jugador == Raqueta.JUGADOR2) {
             g.drawString(numero + "", x - getAnchoString(g), y);

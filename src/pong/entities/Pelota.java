@@ -7,13 +7,14 @@ public class Pelota extends Thread {
 
     private Pista panel;
     private int x, y, tamanio, limiteX, limiteY;
-    private boolean direccionIzquierda, direccionAbajo;
+    private boolean direccionIzquierda, direccionAbajo, moverse;
 
     public Pelota(Pista panel) {
         this.panel = panel;
-        
+        this.moverse = true;
         this.direccionIzquierda = true;
         this.direccionAbajo = true;
+        
         centrar();
         setTamanio(15);
     }
@@ -26,7 +27,7 @@ public class Pelota extends Thread {
 
     @Override
     public void run() {
-        while (true) {
+        while (moverse) {
             try {
                 sleep(30);
             } catch (InterruptedException ex) {
@@ -38,6 +39,10 @@ public class Pelota extends Thread {
 
             panel.repaint();
         }
+    }
+    
+    public synchronized void parar() {
+        this.moverse = false;
     }
 
     private void cambiarSentido() {
