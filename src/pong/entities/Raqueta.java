@@ -15,7 +15,7 @@ public class Raqueta{
         this.jugador = jugador;      
         this.panel = panel;
         this.anchura = 10;
-        this.altura = 60;
+        this.altura = 80;
         this.contador = new Contador(panel.getSize(), jugador);
         
         if (jugador == JUGADOR1){
@@ -37,6 +37,18 @@ public class Raqueta{
 
     public Contador getContador() {
         return contador;
+    }
+
+    public int getAltura() {
+        return altura;
+    }
+
+    public int getAnchura() {
+        return anchura;
+    }
+
+    public int getY() {
+        return y;
     }
     
     public void moverY() {

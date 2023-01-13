@@ -13,9 +13,9 @@ public class Contador {
     public Contador(Dimension dimension, byte jugador) {
         this.jugador = jugador;
         
-        if (jugador == Raqueta.JUGADOR1){
+        if (jugador == Raqueta.JUGADOR2){
             x = dimension.width / 2 - 70;
-        } else if (jugador == Raqueta.JUGADOR2) {
+        } else if (jugador == Raqueta.JUGADOR1) {
             x = dimension.width / 2 + 70;
         }
         
@@ -34,9 +34,9 @@ public class Contador {
         g.setFont(new Font("Arial", Font.PLAIN, TAMANIO_LETRA));
         
         
-        if (jugador == Raqueta.JUGADOR1) {
+        if (jugador == Raqueta.JUGADOR2) {
             g.drawString(numero + "", x - getAnchoString(g), y);
-        } else if (jugador == Raqueta.JUGADOR2) {
+        } else if (jugador == Raqueta.JUGADOR1) {
             g.drawString(numero + "", x, y);
         }
     }

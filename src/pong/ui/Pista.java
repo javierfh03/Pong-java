@@ -1,17 +1,12 @@
 package pong.ui;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.HeadlessException;
 import javax.swing.JPanel;
 import pong.entities.Pelota;
 import pong.entities.Raqueta;
 
-/**
- *
- * @author javier
- */
 public class Pista extends JPanel{
     
     private Raqueta jugador1, jugador2;
@@ -27,6 +22,14 @@ public class Pista extends JPanel{
         this.jugador2 = new Raqueta(this, Raqueta.JUGADOR2);
         this.pelota = new Pelota(this);
         this.pelota.start();
+    }
+
+    public Raqueta getJugador1() {
+        return jugador1;
+    }
+
+    public Raqueta getJugador2() {
+        return jugador2;
     }
     
     @Override

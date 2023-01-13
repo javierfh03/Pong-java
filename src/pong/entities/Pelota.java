@@ -14,8 +14,7 @@ public class Pelota extends Thread {
         
         this.direccionIzquierda = true;
         this.direccionAbajo = true;
-        this.x = panel.getWidth() / 2;
-        this.y = panel.getHeight() / 2;
+        centrar();
         setTamanio(15);
     }
 
@@ -43,10 +42,12 @@ public class Pelota extends Thread {
 
     private void cambiarSentido() {
         if (x == 0) {
+            comprobarLado();
             direccionIzquierda = false;
         }
         
         if (!(x < limiteX)) {
+            comprobarLado();
             direccionIzquierda = true;
         }
         
@@ -75,5 +76,27 @@ public class Pelota extends Thread {
 
     public void dibujar(Graphics g) {
         g.fillRect(x, y, tamanio, tamanio);
+    }
+    
+    private void centrar() {
+        this.x = panel.getWidth() / 2;
+        this.y = panel.getHeight() / 2;
+    }
+    
+    private void comprobarLado(){
+        Raqueta jugador1 = panel.getJugador1();
+        Raqueta jugador2 = panel.getJugador2();
+        
+        if (direccionIzquierda) {
+            if (y < jugador2.getY() || y > (jugador2.getY() + jugador2.getAltura())){
+                jugador1.getContador().subirNumero();
+                centrar();
+            }
+        } else {
+            if (y < jugador1.getY() || y > (jugador1.getY() + jugador1.getAltura())){
+                jugador2.getContador().subirNumero();
+                centrar();
+            }
+        }
     }
 }
