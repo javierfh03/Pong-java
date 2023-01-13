@@ -25,9 +25,9 @@ public class Contador {
     public Contador(Dimension dimension, byte jugador) {
         this.jugador = jugador;
         
-        if (jugador == Raqueta.JUGADOR2){
+        if (jugador == Raqueta.JUGADOR1){
             x = dimension.width / 2 - 70;
-        } else if (jugador == Raqueta.JUGADOR1) {
+        } else if (jugador == Raqueta.JUGADOR2) {
             x = dimension.width / 2 + 70;
         }
         

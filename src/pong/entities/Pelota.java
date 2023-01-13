@@ -23,8 +23,8 @@ public class Pelota extends Thread {
     public Pelota(Pista panel) {
         this.panel = panel;
         this.moverse = true;
-        this.direccionIzquierda = true;
         this.direccionAbajo = true;
+        this.direccionIzquierda = true;
         
         centrar();
         setTamanio(15);
@@ -58,13 +58,11 @@ public class Pelota extends Thread {
 
     private void cambiarSentido() {
         if (x == 0) {
-            comprobarLado();
-            direccionIzquierda = false;
+            comprobarLado(false);
         }
         
         if (!(x < limiteX)) {
-            comprobarLado();
-            direccionIzquierda = true;
+            comprobarLado(true);
         }
         
         if (y == 0) {
@@ -78,9 +76,9 @@ public class Pelota extends Thread {
 
     private void mover() {
         if (direccionIzquierda) {
-            x = x - 5;
-        } else {
             x = x + 5;
+        } else {
+            x = x - 5;
         }
         
         if (direccionAbajo) {
@@ -99,20 +97,29 @@ public class Pelota extends Thread {
         this.y = panel.getHeight() / 2;
     }
     
-    private void comprobarLado(){
+    private void comprobarLado(boolean izquierda){
         Raqueta jugador1 = panel.getJugador1();
         Raqueta jugador2 = panel.getJugador2();
+        int posicionInferior;
         
-        if (direccionIzquierda) {
-            if (y < jugador2.getY() || y > (jugador2.getY() + jugador2.getAltura())){
+        if (izquierda) {
+            posicionInferior = jugador2.getY() + jugador2.getAltura();
+            
+            if (!(y > jugador2.getY() && y < posicionInferior)){
                 jugador1.getContador().subirNumero();
                 centrar();
             }
+            
+            this.direccionIzquierda = false;
         } else {
-            if (y < jugador1.getY() || y > (jugador1.getY() + jugador1.getAltura())){
+            posicionInferior = jugador1.getY() + jugador1.getAltura();
+            
+            if (!(y > jugador1.getY() && y < posicionInferior)){
                 jugador2.getContador().subirNumero();
                 centrar();
             }
+            
+            this.direccionIzquierda = true;
         }
     }
 }

@@ -71,7 +71,7 @@ public class Raqueta{
             if (EventoTeclado.s) {
                 moverAbajo();
             }
-        } else {
+        } else if (jugador == JUGADOR2) {
             if (EventoTeclado.up) {
                 moverArriba();
             }
