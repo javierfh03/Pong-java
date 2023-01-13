@@ -1,15 +1,20 @@
 package pong.ui;
 
 import java.awt.Color;
-import java.awt.HeadlessException;
 import javax.swing.JFrame;
 
+/**
+ * Esta clase crea la ventana perincipal en la que se verá
+ * el juego.
+ * 
+ * @author javier
+ */
 public class Ventana extends JFrame {
     
     private final static int ALTURA = 600;
     private final static int ANCHURA = 400;
     
-    public Ventana() throws HeadlessException {
+    public Ventana() {
         Pista panel = new Pista(ALTURA, ANCHURA);
         EventoTeclado ev = new EventoTeclado(panel);
         

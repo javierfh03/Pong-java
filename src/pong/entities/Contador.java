@@ -5,11 +5,23 @@ import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 
+/**
+ * Esta clase representa los contadores del juego.
+ * 
+ * @author javier
+ */
 public class Contador {
+    
     private int x, y, jugador;
     private String numero;
     private final static int TAMANIO_LETRA = 40;
     
+    /**
+     * Inicializa el contador.
+     * 
+     * @param dimension El tamaño de la ventana.
+     * @param jugador El jugador al que le pertenece el contador.
+     */
     public Contador(Dimension dimension, byte jugador) {
         this.jugador = jugador;
         

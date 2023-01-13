@@ -3,12 +3,23 @@ package pong.entities;
 import java.awt.Graphics;
 import pong.ui.Pista;
 
+/**
+ * Esta clase representa la pelota del juego, es movida 
+ * por un hilo.
+ * 
+ * @author javier
+ */
 public class Pelota extends Thread {
 
     private Pista panel;
     private int x, y, tamanio, limiteX, limiteY;
     private boolean direccionIzquierda, direccionAbajo, moverse;
 
+    /**
+     * Inicializa la pelota.
+     * 
+     * @param panel La pista a la que pertenece.
+     */
     public Pelota(Pista panel) {
         this.panel = panel;
         this.moverse = true;

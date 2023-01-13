@@ -4,20 +4,29 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
-import java.awt.HeadlessException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JPanel;
 import pong.entities.Pelota;
 import pong.entities.Raqueta;
 
+/**
+ * Esta clase crea la pista de juego, en ella se dibujarán las
+ * raquetas, la bola y los marcadores.
+ * 
+ * @author javier
+ */
 public class Pista extends JPanel{
     
     private Raqueta jugador1, jugador2;
     private Pelota pelota;
     private String ganador = "Ganó el jugador 1";
     
-    public Pista(int Altura, int Anchura) throws HeadlessException {
+    /**
+     * Inicializa la pista.
+     * 
+     * @param Altura Altura de la pista.
+     * @param Anchura Anchura de la pista.
+     */
+    public Pista(int Altura, int Anchura) {
         setBackground(Color.BLACK);
         setSize(Altura, Anchura);
         
@@ -78,10 +87,10 @@ public class Pista extends JPanel{
     }
     
     private boolean seguirJuego() {
-        if (jugador1.getContador().getNumero() > 1) {
+        if (jugador1.getContador().getNumero() > 9) {
             ganador = "Ganó el jugador 1";
             return false;
-        } else if (jugador2.getContador().getNumero() > 1) {
+        } else if (jugador2.getContador().getNumero() > 9) {
             ganador = "Ganó el jugador 2";
             return false;
         }

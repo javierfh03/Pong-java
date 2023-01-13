@@ -4,13 +4,25 @@ import java.awt.Graphics;
 import pong.ui.EventoTeclado;
 import pong.ui.Pista;
 
+/**
+ * Esta clase representa las raquetas del juego.
+ * 
+ * @author javier
+ */
 public class Raqueta{
+    
     private int x, y, jugador, anchura, altura;
     private Pista panel;
     private Contador contador;
     public final static byte JUGADOR1 = 1;
     public final static byte JUGADOR2 = 2;
 
+    /**
+     * Inicializa la raqueta.
+     * 
+     * @param panel La pista a la que pertenece.
+     * @param jugador El jugador al que le pertenece la raqueta.
+     */
     public Raqueta(Pista panel, byte jugador) {
         this.jugador = jugador;      
         this.panel = panel;
