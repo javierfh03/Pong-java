@@ -11,7 +11,7 @@ import java.awt.event.KeyEvent;
  */
 public class EventoTeclado extends KeyAdapter {
 
-    public static boolean w, s, up, down;
+    public static boolean w, s, up, down, esc;
     private Pista panel;
     
     public EventoTeclado(Pista panel) {
@@ -25,15 +25,23 @@ public class EventoTeclado extends KeyAdapter {
         if (id == KeyEvent.VK_W) {
             w = true;
         }
+        
         if (id == KeyEvent.VK_S) {
             s = true;
         }
+        
         if (id == KeyEvent.VK_UP) {
             up = true;
         }
+        
         if (id == KeyEvent.VK_DOWN) {
             down = true;
         }
+        
+        if (id == KeyEvent.VK_ESCAPE){
+            System.exit(0);
+        }
+        
         panel.repaint();
     }
 
@@ -44,15 +52,19 @@ public class EventoTeclado extends KeyAdapter {
         if (id == KeyEvent.VK_W) {
             w = false;
         }
+        
         if (id == KeyEvent.VK_S) {
             s = false;
         }
+        
         if (id == KeyEvent.VK_UP) {
             up = false;
         }
+        
         if (id == KeyEvent.VK_DOWN) {
             down = false;
         }
+        
         panel.repaint();
     }
 }
