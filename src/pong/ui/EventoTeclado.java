@@ -1,5 +1,6 @@
 package pong.ui;
 
+import pong.vistas.Pista;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -39,7 +40,7 @@ public class EventoTeclado extends KeyAdapter {
         }
         
         if (id == KeyEvent.VK_ESCAPE){
-            VentanaMenu vm = new VentanaMenu();
+            VentanaInicio vm = new VentanaInicio();
             VentanaJuego vj = (VentanaJuego) panel.getParent().getParent()
                     .getParent().getParent();
             

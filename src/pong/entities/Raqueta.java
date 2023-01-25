@@ -2,7 +2,7 @@ package pong.entities;
 
 import java.awt.Graphics;
 import pong.ui.EventoTeclado;
-import pong.ui.Pista;
+import pong.vistas.Pista;
 
 /**
  * Esta clase representa las raquetas del juego.

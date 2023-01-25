@@ -1,5 +1,6 @@
 package pong.ui;
 
+import pong.vistas.Pista;
 import java.awt.Color;
 import javax.swing.JFrame;
 
@@ -11,17 +12,16 @@ import javax.swing.JFrame;
  */
 public class VentanaJuego extends JFrame {
     
-    private final static int ALTURA = 600;
-    private final static int ANCHURA = 400;
+    private Pista panel;
     
-    public VentanaJuego() {
-        Pista panel = new Pista(ALTURA, ANCHURA);
+    public VentanaJuego(int altura, int anchura) {
+        panel = new Pista(altura, anchura);
         EventoTeclado ev = new EventoTeclado(panel);
         
         add(panel);
         addKeyListener(ev);
         
-        setSize(ALTURA, ANCHURA);
+        setSize(altura, anchura);
         setUndecorated(true);
         setSize(panel.getWidth(), panel.getHeight());
         setResizable(false);
@@ -29,5 +29,9 @@ public class VentanaJuego extends JFrame {
         setTitle("Pong");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setBackground(Color.BLACK);
+    }
+    
+    public void establecerVelocidad(int velocidad) {
+        panel.iniciarJuego(velocidad);
     }
 }

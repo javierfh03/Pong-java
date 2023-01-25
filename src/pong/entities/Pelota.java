@@ -1,7 +1,7 @@
 package pong.entities;
 
 import java.awt.Graphics;
-import pong.ui.Pista;
+import pong.vistas.Pista;
 
 /**
  * Esta clase representa la pelota del juego, es movida 
@@ -12,7 +12,7 @@ import pong.ui.Pista;
 public class Pelota extends Thread {
 
     private Pista panel;
-    private int x, y, tamanio, limiteX, limiteY;
+    private int x, y, tamanio, limiteX, limiteY, velocidad;
     private boolean direccionIzquierda, direccionAbajo, moverse;
 
     /**
@@ -25,6 +25,7 @@ public class Pelota extends Thread {
         this.moverse = true;
         this.direccionAbajo = true;
         this.direccionIzquierda = true;
+        this.velocidad = 30;
         
         centrar();
         setTamanio(15);
@@ -36,11 +37,15 @@ public class Pelota extends Thread {
         this.limiteX = panel.getWidth() - tamanio;
     }
 
+    public void setVelocidad(int velocidad) {
+        this.velocidad = velocidad;
+    }
+
     @Override
     public void run() {
         while (moverse) {
             try {
-                sleep(30);
+                sleep(velocidad);
             } catch (InterruptedException ex) {
                 ex.printStackTrace();
             }

@@ -1,17 +1,24 @@
-package pong.ui;
+package pong.vistas;
 
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import pong.ui.VentanaInicio;
 
-public class VentanaMenu extends JFrame implements MouseListener{
+/**
+ *
+ * @author javier
+ */
+public class Menu extends JPanel implements MouseListener {
     private JLabel jTitulo, jJuego, jSalir;
-
-    public VentanaMenu() {
+    
+    public Menu() {
         inicializar();
         estilos();
         posicionar();
@@ -33,12 +40,6 @@ public class VentanaMenu extends JFrame implements MouseListener{
     private void estilos() {
         setSize(600, 400);
         setBackground(Color.BLACK);
-        setTitle("Pong");
-        getContentPane().setBackground(Color.BLACK);
-        setResizable(false);
-        setUndecorated(true);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
         
         jTitulo.setFont(new Font("Vintage", Font.BOLD, 60));
         jJuego.setFont(new Font("Vintage", Font.BOLD, 25));
@@ -64,11 +65,11 @@ public class VentanaMenu extends JFrame implements MouseListener{
 
     @Override
     public void mouseClicked(MouseEvent e) {
+        VentanaInicio v = (VentanaInicio) this.getTopLevelAncestor();
+        
         if (e.getSource().equals(jJuego)){
-            VentanaJuego v = new VentanaJuego();
+            v.siguiente();
             
-            setVisible(false);
-            v.setVisible(true);
         }else if (e.getSource().equals(jSalir)){
             System.exit(0);
         }

@@ -1,4 +1,4 @@
-package pong.ui;
+package pong.vistas;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -35,7 +35,6 @@ public class Pista extends JPanel{
         this.jugador1 = new Raqueta(this, Raqueta.JUGADOR1);
         this.jugador2 = new Raqueta(this, Raqueta.JUGADOR2);
         this.pelota = new Pelota(this);
-        this.pelota.start();
     }
 
     public Raqueta getJugador1() {
@@ -44,6 +43,11 @@ public class Pista extends JPanel{
 
     public Raqueta getJugador2() {
         return jugador2;
+    }
+    
+    public void iniciarJuego(int velocidadPelota) {
+        this.pelota.setVelocidad(velocidadPelota);
+        this.pelota.start();
     }
     
     @Override
