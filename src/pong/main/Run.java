@@ -1,6 +1,6 @@
 package pong.main;
 
-import pong.ui.Ventana;
+import pong.ui.VentanaMenu;
 
 /**
  * Inicializa el programa.
@@ -9,7 +9,7 @@ import pong.ui.Ventana;
  */
 public class Run {
     public static void main(String[] args) {
-        Ventana v = new Ventana();
+        VentanaMenu v = new VentanaMenu();
         v.setVisible(true);
     }
     

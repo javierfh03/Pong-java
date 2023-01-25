@@ -39,7 +39,12 @@ public class EventoTeclado extends KeyAdapter {
         }
         
         if (id == KeyEvent.VK_ESCAPE){
-            System.exit(0);
+            VentanaMenu vm = new VentanaMenu();
+            VentanaJuego vj = (VentanaJuego) panel.getParent().getParent()
+                    .getParent().getParent();
+            
+            vj.dispose();
+            vm.setVisible(true);
         }
         
         panel.repaint();

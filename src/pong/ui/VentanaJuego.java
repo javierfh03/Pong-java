@@ -9,12 +9,12 @@ import javax.swing.JFrame;
  * 
  * @author javier
  */
-public class Ventana extends JFrame {
+public class VentanaJuego extends JFrame {
     
     private final static int ALTURA = 600;
     private final static int ANCHURA = 400;
     
-    public Ventana() {
+    public VentanaJuego() {
         Pista panel = new Pista(ALTURA, ANCHURA);
         EventoTeclado ev = new EventoTeclado(panel);
         
@@ -23,7 +23,6 @@ public class Ventana extends JFrame {
         
         setSize(ALTURA, ANCHURA);
         setUndecorated(true);
-        setLayout(null);
         setSize(panel.getWidth(), panel.getHeight());
         setResizable(false);
         setLocationRelativeTo(null);

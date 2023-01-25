@@ -18,7 +18,9 @@ public class Pista extends JPanel{
     
     private Raqueta jugador1, jugador2;
     private Pelota pelota;
-    private String ganador = "Ganó el jugador 1";
+    private String ganador;
+    private final static String salir = "Pulse esc para salir";
+    private final static int puntos = 10;
     
     /**
      * Inicializa la pista.
@@ -70,7 +72,6 @@ public class Pista extends JPanel{
             pelota.parar();
             
             // Dibujamos al ganador
-            g.setFont(new Font("Arial", Font.PLAIN, 40));
             finalizarJuego(g);
         }
     }
@@ -81,16 +82,24 @@ public class Pista extends JPanel{
     }
     
     private void finalizarJuego(Graphics g){
-        FontMetrics f = g.getFontMetrics();
+        FontMetrics f;
         
-        g.drawString(ganador, (getWidth() - f.stringWidth(ganador)) / 2 , getHeight() / 2);
+        g.setFont(new Font("Arial", Font.PLAIN, 40));
+        f = g.getFontMetrics();
+        g.drawString(ganador, (getWidth() - f.stringWidth(ganador)) / 2, 
+                (getHeight() / 2) - 20);
+        
+        g.setFont(new Font("Arial", Font.PLAIN, 18));
+        f = g.getFontMetrics();
+        g.drawString(salir, (getWidth() - 
+                f.stringWidth(salir)) / 2 , (getHeight() / 2) + 40);
     }
     
     private boolean seguirJuego() {
-        if (jugador1.getContador().getNumero() > 9) {
+        if (jugador1.getContador().getNumero() > puntos) {
             ganador = "Ganó el jugador 1";
             return false;
-        } else if (jugador2.getContador().getNumero() > 9) {
+        } else if (jugador2.getContador().getNumero() > puntos) {
             ganador = "Ganó el jugador 2";
             return false;
         }
