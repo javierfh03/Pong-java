@@ -6,6 +6,11 @@ import javax.swing.JPanel;
 import pong.vistas.Menu;
 import pong.vistas.Opciones;
 
+/**
+ * Esta ventana muestra el menú y las opciones del juego.
+ * 
+ * @author javier
+ */
 public class VentanaInicio extends JFrame {
     
     private JPanel menu, opciones;

@@ -9,8 +9,8 @@ import pong.entities.Pelota;
 import pong.entities.Raqueta;
 
 /**
- * Esta clase crea la pista de juego, en ella se dibujarán las
- * raquetas, la bola y los marcadores.
+ * Esta clase crea la pista de juego, en ella se dibujarán las raquetas, la bola 
+ * y los marcadores.
  * 
  * @author javier
  */

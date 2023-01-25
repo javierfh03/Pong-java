@@ -5,8 +5,7 @@ import java.awt.Color;
 import javax.swing.JFrame;
 
 /**
- * Esta clase crea la ventana perincipal en la que se verá
- * el juego.
+ * Esta clase crea la ventana en la que se mostrará el juego.
  * 
  * @author javier
  */

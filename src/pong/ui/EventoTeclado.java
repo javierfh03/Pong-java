@@ -5,8 +5,8 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 /**
- * Esta clase recoge los eventos de teclado y permite 
- * mover las raquetas de manera sincronizada.
+ * Esta clase recoge los eventos de teclado y permite mover las raquetas de 
+ * manera sincronizada.
  * 
  * @author javier
  */

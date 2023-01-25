@@ -9,10 +9,13 @@ import pong.ui.VentanaInicio;
 import pong.ui.VentanaJuego;
 
 /**
+ * Esta vista muestra la opcines para iniciar el juego. Estas opciones son el
+ * tamaño de la pista y la velocidad de la pelota.
  *
  * @author javier
  */
 public class Opciones extends JPanel implements MouseListener {
+
     private ButtonGroup grupoPantalla, grupoVelocidad;
     private JRadioButton jRadioGrande, jRadioLenta, jRadioModerada, jRadioNormal,
             jRadioPeque, jRadioRapida;
@@ -22,7 +25,7 @@ public class Opciones extends JPanel implements MouseListener {
         inicializar();
         estilo();
         posicionar();
-        
+
         add(jRadioGrande);
         add(jRadioNormal);
         add(jRadioPeque);
@@ -32,10 +35,10 @@ public class Opciones extends JPanel implements MouseListener {
         add(jTamanio);
         add(jVelocidad);
         add(jIniciar);
-        
+
         jRadioPeque.setSelected(true);
         jRadioModerada.setSelected(true);
-        
+
         grupoPantalla.add(jRadioGrande);
         grupoPantalla.add(jRadioNormal);
         grupoPantalla.add(jRadioPeque);
@@ -43,7 +46,7 @@ public class Opciones extends JPanel implements MouseListener {
         grupoVelocidad.add(jRadioModerada);
         grupoVelocidad.add(jRadioLenta);
     }
-    
+
     private void inicializar() {
         grupoPantalla = new ButtonGroup();
         grupoVelocidad = new ButtonGroup();
@@ -55,14 +58,14 @@ public class Opciones extends JPanel implements MouseListener {
         jRadioLenta = new JRadioButton("Lenta");
         jTamanio = new JLabel("Tamaño pantalla");
         jVelocidad = new JLabel("Velocidad pelota");
-        jIniciar = new JLabel ("Iniciar");
+        jIniciar = new JLabel("Iniciar");
     }
-    
+
     private void estilo() {
         setBackground(Color.BLACK);
         setSize(600, 400);
         setLayout(null);
-        
+
         jRadioGrande.setForeground(new java.awt.Color(255, 255, 255));
         jRadioGrande.setBackground(Color.BLACK);
 
@@ -86,11 +89,11 @@ public class Opciones extends JPanel implements MouseListener {
 
         jVelocidad.setFont(new java.awt.Font("Vintage", Font.BOLD, 14));
         jVelocidad.setForeground(new java.awt.Color(255, 255, 255));
-        
+
         jIniciar.setFont(new Font("Vintage", Font.BOLD, 20));
         jIniciar.setForeground(new java.awt.Color(255, 255, 255));
     }
-    
+
     private void posicionar() {
         jVelocidad.setBounds(151, 183, 140, 17);
         jTamanio.setBounds(151, 100, 140, 17);
@@ -100,7 +103,7 @@ public class Opciones extends JPanel implements MouseListener {
         jRadioRapida.setBounds(357, 218, 90, 19);
         jRadioPeque.setBounds(151, 135, 90, 19);
         jRadioNormal.setBounds(254, 135, 90, 19);
-        jIniciar.setBounds((getWidth() - 100)/2, 250, 
+        jIniciar.setBounds((getWidth() - 100) / 2, 250,
                 100, 100);
         jIniciar.addMouseListener(this);
     }
@@ -109,7 +112,7 @@ public class Opciones extends JPanel implements MouseListener {
     public void mouseClicked(MouseEvent e) {
         VentanaJuego vj;
         VentanaInicio vi = (VentanaInicio) this.getTopLevelAncestor();
-        
+
         if (e.getSource().equals(jIniciar)) {
             if (jRadioNormal.isSelected()) {
                 vj = new VentanaJuego(900, 600);
@@ -118,7 +121,7 @@ public class Opciones extends JPanel implements MouseListener {
             } else {
                 vj = new VentanaJuego(600, 400);
             }
-            
+
             if (jRadioModerada.isSelected()) {
                 vj.establecerVelocidad(30);
             } else if (jRadioRapida.isSelected()) {
@@ -126,28 +129,30 @@ public class Opciones extends JPanel implements MouseListener {
             } else {
                 vj.establecerVelocidad(40);
             }
-            
+
             vj.setVisible(true);
             vi.dispose();
         }
     }
 
     @Override
-    public void mousePressed(MouseEvent e) { }
+    public void mousePressed(MouseEvent e) {
+    }
 
     @Override
-    public void mouseReleased(MouseEvent e) { }
+    public void mouseReleased(MouseEvent e) {
+    }
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        if (e.getSource().equals(jIniciar)){
+        if (e.getSource().equals(jIniciar)) {
             jIniciar.setForeground(new Color(219, 219, 219));
         }
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        if (e.getSource().equals(jIniciar)){
+        if (e.getSource().equals(jIniciar)) {
             jIniciar.setForeground(Color.WHITE);
         }
     }

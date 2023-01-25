@@ -4,8 +4,7 @@ import java.awt.Graphics;
 import pong.vistas.Pista;
 
 /**
- * Esta clase representa la pelota del juego, es movida 
- * por un hilo.
+ * Esta clase representa la pelota del juego, es movida por un hilo.
  * 
  * @author javier
  */
