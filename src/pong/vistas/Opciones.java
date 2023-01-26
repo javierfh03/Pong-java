@@ -125,9 +125,9 @@ public class Opciones extends JPanel implements MouseListener {
             if (jRadioModerada.isSelected()) {
                 vj.establecerVelocidad(30);
             } else if (jRadioRapida.isSelected()) {
-                vj.establecerVelocidad(20);
+                vj.establecerVelocidad(15);
             } else {
-                vj.establecerVelocidad(40);
+                vj.establecerVelocidad(45);
             }
 
             vj.setVisible(true);
