@@ -90,7 +90,7 @@ public class Opciones extends JPanel implements MouseListener {
         jVelocidad.setFont(new java.awt.Font("Vintage", Font.BOLD, 14));
         jVelocidad.setForeground(new java.awt.Color(255, 255, 255));
 
-        jIniciar.setFont(new Font("Vintage", Font.BOLD, 20));
+        jIniciar.setFont(new Font("Vintage", Font.BOLD, 25));
         jIniciar.setForeground(new java.awt.Color(255, 255, 255));
     }
 
@@ -103,8 +103,8 @@ public class Opciones extends JPanel implements MouseListener {
         jRadioRapida.setBounds(357, 218, 90, 19);
         jRadioPeque.setBounds(151, 135, 90, 19);
         jRadioNormal.setBounds(254, 135, 90, 19);
-        jIniciar.setBounds((getWidth() - 100) / 2, 250,
-                100, 100);
+        jIniciar.setSize(100, 100);
+        jIniciar.setLocation((getWidth() - jIniciar.getWidth()) / 2, 250);
         jIniciar.addMouseListener(this);
     }
 

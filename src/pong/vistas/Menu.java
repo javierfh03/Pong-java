@@ -42,7 +42,7 @@ public class Menu extends JPanel implements MouseListener {
         setSize(600, 400);
         setBackground(Color.BLACK);
 
-        jTitulo.setFont(new Font("Vintage", Font.BOLD, 60));
+        jTitulo.setFont(new Font("Vintage", Font.BOLD, 70));
         jJuego.setFont(new Font("Vintage", Font.BOLD, 25));
         jSalir.setFont(new Font("Vintage", Font.BOLD, 25));
 
@@ -55,13 +55,13 @@ public class Menu extends JPanel implements MouseListener {
         setLayout(null);
 
         jTitulo.setSize(200, 100);
-        jTitulo.setLocation((getWidth() - jTitulo.getWidth()) / 2, 20);
+        jTitulo.setLocation((getWidth() - jTitulo.getWidth()) / 2, 40);
 
         jJuego.setSize(200, 100);
-        jJuego.setLocation((getWidth() - jTitulo.getWidth()) / 2, 140);
+        jJuego.setLocation((getWidth() - jTitulo.getWidth()) / 2, 160);
 
         jSalir.setSize(200, 100);
-        jSalir.setLocation((getWidth() - jTitulo.getWidth()) / 2, 240);
+        jSalir.setLocation((getWidth() - jTitulo.getWidth()) / 2, 250);
     }
 
     @Override
@@ -85,9 +85,9 @@ public class Menu extends JPanel implements MouseListener {
     @Override
     public void mouseEntered(MouseEvent e) {
         if (e.getSource().equals(jJuego)) {
-            jJuego.setForeground(new Color(219, 219, 219));
+            jJuego.setForeground(new Color(150, 150, 150));
         } else if (e.getSource().equals(jSalir)) {
-            jSalir.setForeground(new Color(219, 219, 219));
+            jSalir.setForeground(new Color(150, 150, 150));
         }
     }
 
